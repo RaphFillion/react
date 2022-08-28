@@ -1,8 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {createRoot} from 'react-dom/client';
 import App from './App';
 
-ReactDOM.render(<App />, document.querySelector('#root'));
+createRoot(document.querySelector('#root')).render(<App />); // Nouelle façon react 18
 
 // containers => statefull
 // components => stateless
