@@ -1,0 +1,7 @@
+.policeTitre {
+  font-family: 'montserrat', sans-serif;
+  transition: all 150ms ease;
+  &:hover {
+    color: var(--bs-gray-500) !important;
+  }
+}

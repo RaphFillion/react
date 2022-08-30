@@ -1,4 +1,5 @@
 import React from 'react';
 import {createRoot} from 'react-dom/client';
+import App from './App';
 
-createRoot(document.querySelector('#root')).render(<h1>Projet 01</h1>); // Nouvelle façon react 18
+createRoot(document.querySelector('#root')).render(<App />); // Nouvelle façon react 18
