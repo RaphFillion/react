@@ -9,7 +9,7 @@ export default class Book extends Component {
         <td className='align-middle'>{this.props.auteur}</td>
         <td className='align-middle'>{this.props.pages} pages</td>
         <td colSpan={2} className="d-flex justify-content-around mt-2 mb-2">
-          <Button type="warning" click={() => console.log('modification')}>Modification</Button>
+          <Button type="warning" click={this.props.modify}>Modification</Button>
           <Button type="danger" click={this.props.delete}>Suppression</Button>
         </td>
       </>

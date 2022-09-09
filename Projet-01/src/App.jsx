@@ -18,7 +18,7 @@ export default class App extends Component {
     return (
       <div className="container">
         <Title>Page listant les livres</Title>
-        <Books form={this.state.open} />
+        <Books form={this.state.open} closeAdd={() => this.setState({open: false})} />
         <Button
           type="success"
           click={this.handleAdd}>
