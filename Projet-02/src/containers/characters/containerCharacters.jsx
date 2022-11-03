@@ -10,8 +10,10 @@ export default class containerCharacters extends Component {
       force: 0,
       agilite: 0,
       intelligence: 0
-    }
+    },
+    attributes: 7
   }
+
   handleBefore = () => {
     this.setState((oldState) => {
       const newCharacter = {...oldState.character}
@@ -32,6 +34,36 @@ export default class containerCharacters extends Component {
     })
   }
 
+  handleRemove = (attribute) => {
+    this.setState((oldState) => {
+      if (oldState.character[attribute] <= 0 || oldState.attributes >= 7) return null;
+      const newAttributes = oldState.character[attribute] - 1;
+      const newCharacter = {...oldState.character}
+      const newPointsAttribute = oldState.attributes + 1
+
+      newCharacter[attribute] = newAttributes;
+      return {
+        character : newCharacter,
+        attributes : newPointsAttribute
+      }
+    })
+  }
+  
+  handleAdd = (attribute) => {
+    this.setState((oldState) => {
+      if (oldState.character[attribute] >= 5 || oldState.attributes <= 0) return null;
+      const newAttributes = oldState.character[attribute] + 1;
+      const newCharacter = {...oldState.character}
+      const newPointsAttribute = oldState.attributes - 1
+
+      newCharacter[attribute] = newAttributes;
+      return {
+        character : newCharacter,
+        attributes : newPointsAttribute
+      }
+    })
+  }
+
   render() {
     return(
       <div className='container'>
@@ -39,7 +71,10 @@ export default class containerCharacters extends Component {
         <Character 
           {...this.state.character} 
           before={this.handleBefore}
-          next={this.handleNext}  
+          next={this.handleNext} 
+          nbAttributes={this.state.attributes}
+          remove={this.handleRemove}
+          add={this.handleAdd} 
         />
         <div>Armes</div>
         <div className='d-flex align-items-center gap-5'>
