@@ -5,8 +5,14 @@ export default class button extends Component {
     return(
       <>
         <button
-          className={`btn btn-${this.props.type} ${this.props.type === 'success' ? 'w-100' : ''}`}
-          onClick={this.props.click}>{this.props.children}</button>
+          className=
+          {
+            `btn btn-${this.props.type}
+            ${this.props.type === 'success' || this.props.fullWidth === 'true' ? 'w-100 mb-3' : ''}`
+          }
+          onClick={this.props.click}>
+            {this.props.children}
+        </button>
       </>
     )
   }
