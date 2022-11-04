@@ -1,7 +1,11 @@
 import Characters from './containers/characters/containerCharacters'
+import ListCharacter from './containers/ListCharacter/ListCharacter'
 
 export default function App() {
   return (
-    <Characters />
+    <div className='container'>
+      <Characters />
+      <ListCharacter />
+    </div>
   )
 }
