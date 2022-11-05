@@ -1,13 +1,14 @@
 import { Component } from 'react';
 import axios from 'axios'
-
+import Title from '../../components/titles/title';
+import CharacterData from './CharacterData/CharacterData';
 export default class ListCharacter extends Component {
   state = {
     characters: null,
     loading: false
   }
 
-  componentDidMount = () => {
+  loadData = () => {
     this.setState({loading: true})
     axios.get('https://character-creation-5723e-default-rtdb.firebaseio.com/characters.json')
       .then(res => {
@@ -19,10 +20,36 @@ export default class ListCharacter extends Component {
         this.setState({loading: false})
       })
   }
+
+  componentDidMount = () => {
+    this.loadData();
+  }
+  
+  componentDidUpdate = (oldProps, oldState) => {
+    if (oldProps.refresh !== this.props.refresh) {
+      this.loadData();
+    }
+  }
+
   render() {
     return(
       <>
-        liste de personnages
+        {this.state.loading && <div>Loading ... </div>}
+        {
+          !this.state.loading && this.state.characters &&
+            <div className='row'>
+              {
+                this.state.characters.map((character, i) => {
+                  return (
+                    <div key={i} className='col-6'>
+                      <Title>{character.name}</Title>
+                      <CharacterData {...character.character} />
+                    </div>
+                  )
+                })
+              }
+            </div>
+        }
       </>
     )
   }

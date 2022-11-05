@@ -115,6 +115,7 @@ export default class containerCharacters extends Component {
         console.log(res)
         this.setState({loading: false})
         this.handleReset()
+        this.props.refresh()
       })
       .catch(error => {
         console.log(error)
