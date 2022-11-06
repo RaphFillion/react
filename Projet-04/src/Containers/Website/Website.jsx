@@ -4,7 +4,6 @@ import Home from './Home/Home';
 import Localisation from './Localisation/Localisation';
 import Contact from './Contact/Contact';
 import NavBar from '../../Components/UI/NavBar/NavBar';
-import Footer from '../../Components/footer/footer';
 import Lost from '../../Components/404/Lost';
 
 export default class Website extends Component {
@@ -18,7 +17,6 @@ export default class Website extends Component {
           <Route path='contact/*' element={<Contact />} />
           <Route path='*' element={<Lost />} />
         </Routes>
-        <Footer />
       </div>
     )
   }
